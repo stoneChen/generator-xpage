@@ -1,0 +1,20 @@
+{
+  "name": "generator-xpage",
+  "version": "1.0.0",
+  "description": "used to build statis pages",
+  "main": "index.js",
+  "files": [
+    "app",
+    "templates"
+  ],
+  "scripts": {},
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "stone",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "yeoman-generator": "^0.21.1"
+  }
+}
