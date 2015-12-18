@@ -1,6 +1,6 @@
 # A Yeoman generator for building a static page
 
-* 使用本generator前,需先安装全局yeoman*
+*使用本generator前,需先安装全局yeoman*
 
 ###安装
 ```
