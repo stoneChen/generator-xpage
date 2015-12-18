@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --inline",
+    "start": "npm run dev",
     "dev": "node server.js",
     "build": "gulp",
     "lint": "eslint src --fix"
