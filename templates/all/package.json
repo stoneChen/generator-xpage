@@ -1,10 +1,9 @@
 {
   "name": "static-page-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run dev",
     "dev": "node server.js",
     "build": "gulp",
     "lint": "eslint src --fix"
@@ -21,6 +20,7 @@
     "eslint": "^1.10.3",
     "eslint-loader": "^1.1.1",
     "express": "^4.13.3",
+    "extract-text-webpack-plugin": "^0.9.1",
     "file-loader": "^0.8.5",
     "gulp": "^3.9.0",
     "gulp-load-plugins": "^1.1.0",

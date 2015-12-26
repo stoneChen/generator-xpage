@@ -9,14 +9,15 @@ var port = globalConfig.serverPort;
 var app = express();
 
 var webpack = require('webpack');
-var config = require('./webpack.config');
+var webpackConfig = require('./webpack.config');
 
-config.entry = ['webpack-hot-middleware/client', config.entry];
-var compiler = webpack(config);
+webpackConfig.entry.unshift('webpack-hot-middleware/client');
+webpackConfig.plugins.unshift(new webpack.HotModuleReplacementPlugin());
+var compiler = webpack(webpackConfig);
 
 app.use(require('webpack-dev-middleware')(compiler, {
   //noInfo: true,
-  publicPath: config.output.publicPath
+  publicPath: webpackConfig.output.publicPath
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
