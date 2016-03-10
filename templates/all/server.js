@@ -1,30 +1,41 @@
-var path = require('path');
-var ip = require('ip');
-var express = require('express');
-var open = require('open');
+var express = require('express')
+var path = require('path')
+var proxy = require('proxy-middleware')
+var webpack = require('webpack')
+var ip = require('ip')
+var open = require('open')
+var config = require('./webpack.dev.conf')
+var globalConfig = require('./global.config')
 
-var globalConfig = require('./global.config');
-var curIP = ip.address();
-var port = globalConfig.serverPort;
-var app = express();
+var curIP = ip.address()
+var port = globalConfig.serverPort
 
-var webpack = require('webpack');
-var webpackConfig = require('./webpack.config');
+var app = express()
+var compiler = webpack(config)
 
-webpackConfig.entry.unshift('webpack-hot-middleware/client');
-webpackConfig.plugins.unshift(new webpack.HotModuleReplacementPlugin());
-var compiler = webpack(webpackConfig);
+app.use(require('connect-history-api-fallback')())
 
+// serve webpack bundle output
 app.use(require('webpack-dev-middleware')(compiler, {
-  //noInfo: true,
-  publicPath: webpackConfig.output.publicPath
-}));
+  publicPath: config.output.publicPath,
+  stats: {
+    colors: true,
+    chunks: false
+  }
+}))
 
-app.use(require('webpack-hot-middleware')(compiler));
+// enable hot-reload and state-preserving
+// compilation error display
+app.use(require('webpack-hot-middleware')(compiler))
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, './dist/index.html'));
-});
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, '../dist/index.html'));
+// });
+
+if (globalConfig.proxy) {
+  app.use(globalConfig.proxy.path, proxy(globalConfig.proxy.target))
+}
+
 
 app.listen(port, curIP, function (err) {
   if (err) {
@@ -35,5 +46,3 @@ app.listen(port, curIP, function (err) {
   console.log('Go to %s', address);
   open(address);
 });
-
-
