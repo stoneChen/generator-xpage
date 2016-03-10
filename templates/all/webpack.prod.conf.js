@@ -5,8 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var globalConfig = require('./global.config')
 // naming output files with hashes for better caching.
 // dist/index.html will be auto-generated with correct URLs.
-config.output.filename = '[name].[chunkhash].js'
-config.output.chunkFilename = '[id].[chunkhash].js'
+config.output.filename = '[name].[chunkhash:8].js'
+config.output.chunkFilename = '[id].[chunkhash:8].js'
 
 // whether to generate source map for production files.
 // disabling this can speed up the build.
@@ -39,12 +39,12 @@ config.plugins = (config.plugins || []).concat([
   }),
   new webpack.optimize.OccurenceOrderPlugin(),
   // extract css into its own file
-  new ExtractTextPlugin('[name].[contenthash].css'),
+  new ExtractTextPlugin('[name].[contenthash:8].css'),
   // generate dist index.html with correct asset hash for caching.
   // you can customize output by editing /src/index.html
   // see https://github.com/ampedandwired/html-webpack-plugin
   new HtmlWebpackPlugin({
-    filename: 'index.html',
+    filename: '../index.html',
     template: 'index.template.html',
     title: globalConfig.pageConfig.title,
     inject: true,

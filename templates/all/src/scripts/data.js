@@ -1,5 +1,5 @@
-// const imgSrc = require('../images/img.jpg');
+const imgSrc = require('../images/webpack.jpeg')
 
 export default {
-  // imgSrc: imgSrc
+  imgSrc: imgSrc
 }

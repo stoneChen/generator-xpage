@@ -1,7 +1,7 @@
 import 'normalize.css'
 import $ from 'jquery'
 import template from 'lodash/string/template'
-import './scripts/responsive' // 动态设置根字体
+// import './scripts/responsive' // 动态设置根字体
 import './styles/common.scss'
 import data from './scripts/data'
 import bindEvents from './scripts/events'

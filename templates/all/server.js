@@ -28,9 +28,9 @@ app.use(require('webpack-dev-middleware')(compiler, {
 // compilation error display
 app.use(require('webpack-hot-middleware')(compiler))
 
-// app.get('/', function (req, res) {
-//   res.sendFile(path.join(__dirname, '../dist/index.html'));
-// });
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
 
 if (globalConfig.proxy) {
   app.use(globalConfig.proxy.path, proxy(globalConfig.proxy.target))

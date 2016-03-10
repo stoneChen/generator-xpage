@@ -27,7 +27,7 @@ config.module.loaders.push(
     loader: 'style-loader!css-loader!postcss-loader!sass-loader?outputStyle=expanded'
   }
 )
-
+console.log(globalConfig.pageConfig.title)
 config.plugins = (config.plugins || []).concat([
   // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
   new webpack.optimize.OccurenceOrderPlugin(),
@@ -36,8 +36,9 @@ config.plugins = (config.plugins || []).concat([
   // https://github.com/ampedandwired/html-webpack-plugin
   new HtmlWebpackPlugin({
     filename: 'index.html',
-    template: 'index.template.html',
-    inject: true
+    // template: 'index.template.html',
+    title: globalConfig.pageConfig.title,
+    inject: true,
   })
 ])
 

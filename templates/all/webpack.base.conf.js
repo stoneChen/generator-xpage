@@ -5,8 +5,8 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, '../dist/static'),
-    publicPath: '/static/',
+    path: path.resolve(__dirname, 'dist/static'),
+    publicPath: 'static/',
     filename: '[name].js'
   },
   resolve: {
@@ -33,17 +33,12 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw'
       },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
+      { test: /\.(gif|jpg|jpeg|png|bmp|svg|woff|woff2|eot|ttf)$/,
         loader: 'url',
         query: {
-          limit: 10000,
-          name: '[name].[ext]?[hash:7]'
+          limit: 8912,
+          name: 'resources/[name].[hash:8].[ext]'
         }
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
-        loader: 'url-loader?limit=8192'
       }
     ]
   },
