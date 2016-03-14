@@ -1,6 +1,6 @@
 {
   "name": "generator-xpage",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "used to build statis pages",
   "main": "index.js",
   "files": [
@@ -8,8 +8,8 @@
     "templates"
   ],
   "scripts": {},
-  "publishConfig":{
-    "registry":"http://registry.npmjs.org"
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
   },
   "keywords": [
     "yeoman-generator"
