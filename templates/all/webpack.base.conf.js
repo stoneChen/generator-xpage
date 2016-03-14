@@ -1,5 +1,6 @@
 var path = require('path')
-var autoprefixer = require('autoprefixer');
+var autoprefixer = require('autoprefixer');<% if (isMobile) { %>
+var pxtorem = require('postcss-pxtorem');<% } %>
 module.exports = {
   entry: {
     app: './src/index.js'
@@ -43,7 +44,14 @@ module.exports = {
     ]
   },
   postcss: function () {
-    return [ autoprefixer({browsers: '> 1%'}) ];
+    return [<% if (isMobile) { %>
+      pxtorem({
+        rootValue: 100,
+        propWhiteList: [],
+        replace: true,
+        minPixelValue: 3
+      }),<% } %>
+      autoprefixer({browsers: '> 1%'}) ];
   },
   eslint: {
     formatter: require('eslint-friendly-formatter')

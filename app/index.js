@@ -1,5 +1,6 @@
 var yeoman = require('yeoman-generator');
 var path = require('path');
+var yosay = require('yosay');
 var chalk = require('chalk');
 
 module.exports = yeoman.generators.Base.extend({
@@ -11,6 +12,25 @@ module.exports = yeoman.generators.Base.extend({
       required: false,
       defaults:path.basename(process.cwd())
     });
+  },
+  prompting: function () {
+    var done = this.async();
+    // Have Yeoman greet the user.
+    this.log(yosay(
+      'Welcome to the swell ' + chalk.red('XKS Page Scaffolding') + ' generator!'
+    ));
+    var prompts = [
+      {
+        type: 'confirm',
+        name: 'isMobile',
+        message: 'Is the app mobile?\n',
+        default: true
+      }
+    ];
+    this.prompt(prompts, function (props) {
+      this.isMobile = props.isMobile;
+      done();
+    }.bind(this));
   },
   writing: function () {
     this.sourceRoot(path.join(__dirname, '../templates'));
