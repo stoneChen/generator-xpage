@@ -1,6 +1,6 @@
 {
   "name": "generator-xpage",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "used to build statis pages",
   "main": "index.js",
   "files": [
