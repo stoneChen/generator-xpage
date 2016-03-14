@@ -1,11 +1,16 @@
-var generators = require('yeoman-generator');
+var yeoman = require('yeoman-generator');
 var path = require('path');
 var chalk = require('chalk');
 
-module.exports = generators.Base.extend({
+module.exports = yeoman.generators.Base.extend({
   constructor: function () {
     // Calling the super constructor is important so our generator is correctly set up
-    generators.Base.apply(this, arguments);
+    yeoman.generators.Base.apply(this, arguments);
+    this.argument('appName', {
+      type: String,
+      required: false,
+      defaults:path.basename(process.cwd())
+    });
   },
   writing: function () {
     this.sourceRoot(path.join(__dirname, '../templates'));
