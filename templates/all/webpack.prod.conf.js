@@ -44,7 +44,7 @@ config.plugins = (config.plugins || []).concat([
   // you can customize output by editing /src/index.html
   // see https://github.com/ampedandwired/html-webpack-plugin
   new HtmlWebpackPlugin({
-    filename: '../index.html',
+    filename: 'index.html',
     template: 'index.template.html',
     title: globalConfig.pageConfig.title,
     inject: true,
