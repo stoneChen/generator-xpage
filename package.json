@@ -7,7 +7,10 @@
     "app",
     "templates"
   ],
-  "scripts": {},
+  "scripts": {
+    "vp": "mversion patch -m 'Bumped to v%s'",
+    "vm": "mversion minor -m 'Bumped to v%s'"
+  },
   "publishConfig": {
     "registry": "http://registry.npmjs.org"
   },
