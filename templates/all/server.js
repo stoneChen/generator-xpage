@@ -32,10 +32,15 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-if (globalConfig.proxy) {
-  app.use(globalConfig.proxy.path, proxy(globalConfig.proxy.target))
+if (globalConfig.proxy && globalConfig.proxy.path && globalConfig.proxy.target) {
+  console.log('proxy setting: %s => %s', globalConfig.proxy.path, globalConfig.proxy.target)
+  app.use(function (req, res, next) {
+    if (req.url.indexOf(globalConfig.proxy.path) === 0) {
+      console.log('proxy url matched: %s', req.url)
+      return proxy(globalConfig.proxy.target)(req, res, next)
+    }
+  })
 }
-
 
 app.listen(port, curIP, function (err) {
   if (err) {
