@@ -45,7 +45,7 @@ config.plugins = (config.plugins || []).concat([
   // see https://github.com/ampedandwired/html-webpack-plugin
   new HtmlWebpackPlugin({
     filename: 'index.html',
-    template: 'index.template.html',
+    template: 'index.template.ejs',
     title: globalConfig.pageConfig.title,
     inject: true,
     minify: {
