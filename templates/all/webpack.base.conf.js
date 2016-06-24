@@ -1,6 +1,8 @@
-var path = require('path')
-var autoprefixer = require('autoprefixer');<% if (isMobile) { %>
-var pxtorem = require('postcss-pxtorem');<% } %>
+"use strict";
+
+let path = require('path')
+let autoprefixer = require('autoprefixer');<% if (isMobile) { %>
+let pxtorem = require('postcss-pxtorem');<% } %>
 module.exports = {
   entry: {
     app: './src/index.js'

@@ -4,7 +4,7 @@ import template from 'lodash/template'<% if (isMobile) { %>
 import './scripts/responsive' // 动态设置根字体
 require('fastclick').attach(document.body)// 引入fastclick，解决300ms延迟问题
 <% } %>
-import './styles/common.scss'
+import './styles/common.styl'
 import data from './scripts/data'
 import bindEvents from './scripts/events'
 import tpl from './templates/container.html'
